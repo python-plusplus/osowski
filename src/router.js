@@ -15,7 +15,22 @@ const router = createRouter({
         path:"/about",
         name: "about",
         component: About
-    }] 
+    },
+    {
+        path: '/services',
+        name: 'services',
+        component: () => import('./views/Services.vue'),
+    },
+{
+    path: '/blog',
+    name: 'blog',
+    component: () => import('./views/Blog.vue'),
+},
+{
+    path: '/contact',
+    name: 'contact',
+    component: () => import('./views/Contact.vue'),
+},] 
 });
 
 export default router;
