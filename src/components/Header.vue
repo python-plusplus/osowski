@@ -41,8 +41,7 @@
   font-style: normal;
   
 
-  color: #000000;
-  fill: white;
+  color: #000000; 
   background: white;
 }
 
