@@ -1,20 +1,31 @@
 <template>
-  <div id="header">
-    <div id="left">
-      <a id="frame1" href="localhost:8080">
-        <h3 id="home-logo">Kiona Osowski</h3>
-        <p id="home-subtitle">Personal Life Coach</p>
-      </a>
-    </div>
-    <div id="spacer"></div>
-      <ul id="right-list">
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link :to="{name: 'about'}">About</router-link></li>
-        <li><router-link :to="{name: 'services'}">Services</router-link></li>
-        <li><router-link :to="{name: 'blog'}">Blog</router-link></li>
-        <li><router-link :to="{name: 'contact'}">Contact</router-link></li>
-      </ul> 
-  </div> 
+  <header>
+    <nav class="container">
+      <div id="left">
+        <a id="frame1" href="localhost:8080">
+          <h3 id="home-logo">Kiona Osowski</h3>
+          <p id="home-subtitle">Personal Life Coach</p>
+        </a>
+      </div>
+      <div id="spacer"></div>
+        <ul id="right-list">
+          <li><router-link to="/">Home</router-link></li>
+          <li><router-link :to="{name: 'about'}">About</router-link></li>
+          <li><router-link :to="{name: 'services'}">Services</router-link></li>
+          <li><router-link :to="{name: 'blog'}">Blog</router-link></li>
+          <li><router-link :to="{name: 'contact'}">Contact</router-link></li>
+        </ul> 
+    </nav>
+    <transition name="mobile-nav">
+      <ul>
+          <li><router-link to="/">Home</router-link></li>
+          <li><router-link :to="{name: 'about'}">About</router-link></li>
+          <li><router-link :to="{name: 'services'}">Services</router-link></li>
+          <li><router-link :to="{name: 'blog'}">Blog</router-link></li>
+          <li><router-link :to="{name: 'contact'}">Contact</router-link></li>
+        </ul> 
+    </transition>
+  </header> 
 </template>
 
 <script>
@@ -23,7 +34,8 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
 #header{
   display: flex;
   flex-direction: row;
