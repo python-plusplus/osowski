@@ -13,8 +13,24 @@ export default{
     components: { BlogCard },
     data() {
         return{
-            sampleBlogCards: []
+            welcomeScreen: {
+
+            },
+            sampleBlogPost: [
+
+            ],
+            sampleBlogCards: [
+
+            ],
         } 
     }
 }
 </script>
+<style lang="scss" scoped>
+.blog-card-wrap{
+    h3{ 
+        font-weight: 300;
+        font-size: 25px; 
+    }
+}
+</style>
