@@ -26,37 +26,24 @@
       <h2 class="section-header">HOW I CAN HELP YOU</h2>
     </div>
   </div>
-
+  <!-- <div class="blog-card-wrap container">
+  <BlogCard :post="post" v-for="(post, index) in sampleBlogCards" :key="index" />
+  </div> -->
   <div id="Footer" class="small-section">
     
   </div>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
-  <h1>Gang</h1>
+
 </template>
 
 <script>
 export default{
-    name: 'Home'
+    name: 'Home',
+    components:{},
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
 h1{
     font-family: LuloCleanW01-OneBold;
     font-style: normal;
@@ -79,4 +66,5 @@ button{
   font-weight:100;
   font-size: 16px;
 }
+
 </style>

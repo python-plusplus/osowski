@@ -8,7 +8,7 @@
                 <Delete class="icon" />
             </div>
         </div>
-        <img :src="require('../assets/blogCards/stock-2.jpg')" alt="" />
+        <img :src="require(`../assets/blogCards/${post.blogCoverPhoto}.jpg`)" alt="" />
         <div class="info">
             <h4> {{ post.blogTitle }}</h4>
             <h6> Posted on: {{ post.blogDate }}</h6>
@@ -32,10 +32,7 @@ export default {
         Edit,
         Delete,
     },
-    computed:{
-        sampleblogCards(){
-            return this.$store.state.sampleblogCards;
-        },
+    computed:{ 
         editPost(){
             return this.$store.state.editPost;
         }

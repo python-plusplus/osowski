@@ -29,7 +29,10 @@ export default{
                 console.log(this.$store.state.editPost);
             }
         }
-    } 
+    },
+    beforeUnmount(){
+       this.$store.commit("toggleEditPost", false);
+    }
 }
 </script>
 
