@@ -1,7 +1,7 @@
 <template>
-  <Header /> 
+  <Header v-if="!navigation"/> 
   <router-view /> 
-  <Footer />
+  <Footer v-if="!navigation" />
 </template>
 
 <script>
@@ -13,6 +13,25 @@ export default {
   components: { 
     Header,
     Footer
+  },
+  data() {
+    return {
+      navigation: null,
+    };
+  }, 
+  methods: {
+    checkRoute() {
+      if (this.$route.name === "login" || this.$route.name === "register" || this.$route.name === "forgotpassword") {
+        this.navigation = true;  
+        return;
+      } 
+      this.navigation = false;  
+    }
+  },
+  watch:{
+    $route() {
+      this.checkRoute();
+    } 
   }
 }
 </script>

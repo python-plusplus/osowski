@@ -25,20 +25,12 @@
     <div id="how-i-can-help">
       <h2 class="section-header">HOW I CAN HELP YOU</h2>
     </div>
-  </div>
-  <!-- <div class="blog-card-wrap container">
-  <BlogCard :post="post" v-for="(post, index) in sampleBlogCards" :key="index" />
-  </div> -->
-  <div id="Footer" class="small-section">
-    
-  </div>
-
+  </div> 
 </template>
 
 <script>
-export default{
-    name: 'Home',
-    components:{},
+export default {
+    name: 'Home', 
 }
 </script>
 
