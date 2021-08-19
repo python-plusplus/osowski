@@ -15,8 +15,9 @@
                 <password class="icon" />
             </div>
         </div>
-        <router-link class="forgot-password" :to="{ name: 'forgotpassword' }"></router-link>
-        <button> Sign In</button>
+        <router-link class="forgot-password" :to="{ name: 'forgotpassword' }">Forgot Password</router-link>
+        <div class="error"> {{ this.errorMsg }} </div>
+        <button @click.prevent="signIn"> Sign In</button>
     </form>
     <div class="background">
 
@@ -26,19 +27,35 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+import "firebase/auth";
 import email from "../assets/Icons/envelope-regular.svg"
 import password from "../assets/Icons/lock-alt-solid.svg"
 export default {
     name: "Login",
     components:{
         email,
-        password
+        password, 
     },
     data(){
         return{
-            email: null,
-            password: null,
+            email: "",
+            password: "",
+            error: null,
+            errorMsg: "",
         };
+    },
+    methods: {
+      async signIn(){
+        try{
+          const user = firebase.auth().signInWithEmailAndPassword(this.email, this.password); 
+          console.log(user.uid);
+          this.$router.push({ name: "home" });
+        } catch(err){
+          this.error = true;
+          this.errorMsg = err.message; 
+        } 
+      }
     }
 }
 </script>
