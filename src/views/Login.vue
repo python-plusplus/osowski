@@ -33,6 +33,7 @@ import password from "../assets/Icons/lock-alt-solid.svg";
 import firebase from "firebase/app";
 import "firebase/auth";
 import "../firebase/firebaseinit";
+
 export default {
   name: "Login",
   components: {

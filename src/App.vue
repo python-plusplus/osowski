@@ -7,12 +7,19 @@
 <script>
 import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
+// import firebase from 'firebase/app'
+// import "firebase/auth"
+// import "./firebase/firebaseinit"
+
 
 export default {
   name: 'App',
   components: { 
     Header,
     Footer
+  },
+  created(){
+    this.checkRoute(); 
   },
   data() {
     return {
