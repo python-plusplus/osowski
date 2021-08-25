@@ -1,66 +1,70 @@
 <template>
-<div class="form-wrap">
-    <form action="" class="login">
-        <p class="login-register">
-            Don't have an account?
-            <router-link class="router-link" :to="{ name: 'register' }">Register</router-link>
-        </p> 
-        <div class="inputs">
-            <div class="input">
-                <input type="text" placeholder="Email" v-model="email" />
-                <email class="icon" />
-            </div>
-            <div class="input">
-                <input type="text" placeholder="Password" v-model="password" />
-                <password class="icon" />
-            </div>
+  <div class="form-wrap">
+    <form class="login">
+      <p class="login-register">
+        Don't have an account?
+        <router-link class="router-link" :to="{ name: 'register' }">Register</router-link>
+      </p>
+      <h2>Login to FireBlogs</h2>
+      <div class="inputs">
+        <div class="input">
+          <input type="text" placeholder="Email" v-model="email" />
+          <email class="icon" />
         </div>
-        <router-link class="forgot-password" :to="{ name: 'forgotpassword' }">Forgot Password</router-link>
-        <div class="error"> {{ this.errorMsg }} </div>
-        <button @click.prevent="signIn"> Sign In</button>
+        <div class="input">
+          <input type="password" placeholder="Password" v-model="password" />
+          <password class="icon" />
+        </div>
+        <div v-show="error" class="error">{{ this.errorMsg }}</div>
+      </div>
+      <router-link class="forgot-password" :to="{ name: 'forgotpassword' }"
+        >Forgot your password?</router-link
+      >
+      <button @click.prevent="signIn">Sign In</button>
+      <div class="angle"></div>
     </form>
-    <div class="background">
-
-    </div>
-</div>
- 
+    <div class="background"></div>
+  </div>
 </template>
 
 <script>
+import email from "../assets/Icons/envelope-regular.svg";
+import password from "../assets/Icons/lock-alt-solid.svg";
 import firebase from "firebase/app";
 import "firebase/auth";
-import email from "../assets/Icons/envelope-regular.svg"
-import password from "../assets/Icons/lock-alt-solid.svg"
+import "../firebase/firebaseinit";
 export default {
-    name: "Login",
-    components:{
-        email,
-        password, 
-    },
-    data(){
-        return{
-            email: "",
-            password: "",
-            error: null,
-            errorMsg: "",
-        };
-    },
-    methods: {
-      signIn(){ 
-          firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-          .then(() => { 
-          this.$router.push({ name: "home" }); 
+  name: "Login",
+  components: {
+    email,
+    password,
+  },
+  data() {
+    return {
+      email: "",
+      password: "",
+      error: null,
+      errorMsg: "",
+    };
+  },
+  methods: {
+    signIn() {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(this.email, this.password)
+        .then(() => {
+          this.$router.push({ name: "home" });
           this.error = false;
           this.errorMsg = "";
           console.log(firebase.auth().currentUser.uid);
-          })
-          .catch((err) => {
+        })
+        .catch((err) => {
           this.error = true;
-          this.errorMsg = err.message; 
-          })
-        } 
-    } 
-}
+          this.errorMsg = err.message;
+        });
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -75,12 +79,15 @@ export default {
   @media (min-width: 900px) {
     width: 100%;
   }
+
   .login-register {
     margin-bottom: 32px;
+
     .router-link {
       color: #000;
     }
   }
+
   form {
     padding: 0 10px;
     position: relative;
@@ -92,6 +99,7 @@ export default {
     @media (min-width: 900px) {
       padding: 0 50px;
     }
+
     h2 {
       text-align: center;
       font-size: 32px;
@@ -101,9 +109,11 @@ export default {
         font-size: 40px;
       }
     }
+
     .inputs {
       width: 100%;
       max-width: 350px;
+
       .input {
         position: relative;
         display: flex;
@@ -116,10 +126,12 @@ export default {
           background-color: #f2f7f6;
           padding: 4px 4px 4px 30px;
           height: 50px;
+
           &:focus {
             outline: none;
           }
         }
+
         .icon {
           width: 12px;
           position: absolute;
@@ -127,6 +139,7 @@ export default {
         }
       }
     }
+
     .forgot-password {
       text-decoration: none;
       color: #000;
@@ -135,10 +148,12 @@ export default {
       margin: 16px 0 32px;
       border-bottom: 1px solid transparent;
       transition: 0.5s ease all;
+
       &:hover {
         border-color: #303030;
       }
     }
+
     .angle {
       display: none;
       position: absolute;
@@ -152,6 +167,7 @@ export default {
       }
     }
   }
+
   .background {
     display: none;
     flex: 2;
