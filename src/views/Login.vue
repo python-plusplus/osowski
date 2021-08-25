@@ -46,17 +46,20 @@ export default {
         };
     },
     methods: {
-      async signIn(){
-        try{
-          const user = firebase.auth().signInWithEmailAndPassword(this.email, this.password); 
-          console.log(user.uid);
-          this.$router.push({ name: "home" });
-        } catch(err){
+      signIn(){ 
+          firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+          .then(() => { 
+          this.$router.push({ name: "home" }); 
+          this.error = false;
+          this.errorMsg = "";
+          console.log(firebase.auth().currentUser.uid);
+          })
+          .catch((err) => {
           this.error = true;
           this.errorMsg = err.message; 
+          })
         } 
-      }
-    }
+    } 
 }
 </script>
 
